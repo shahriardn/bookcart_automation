@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "https://www.projoodle.com/",
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress", "node", "cypress-real-events"],
+    "allowSyntheticDefaultImports": true,
+//    "esModuleInterop": true,
+    "paths": {
+      "@badeball/cypress-cucumber-preprocessor/*": ["./node_modules/@badeball/cypress-cucumber-preprocessor/dist/subpath-entrypoints/*"]
+    }
+  },
+  "include": ["**/*.ts", "cypress.d.ts"],
+}
