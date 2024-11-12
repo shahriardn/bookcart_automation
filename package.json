@@ -1,0 +1,32 @@
+{
+  "name": "BookCard",
+  "version": "1.0.0",
+  "devDependencies": {
+    "cypress": "^13.7.3",
+    "typescript": "*"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.4",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "@cypress/webpack-preprocessor": "^6.0.1",
+    "cypress-real-events": "^1.11.0",
+    "date-fns": "^3.6.0",
+    "typescript": "*",
+    "xml-js": "^1.6.11"
+  },
+  "scripts": {
+    "cy:run": "cypress run --headless --browser chrome ",
+    "cy:run:cloud": "cypress run ",
+    "cy:open": "cypress open "
+  },
+  "cypress-cucumber-preprocessor": {
+    "json": {
+      "enabled": false,
+      "output": "./reports/cucumber-json.json"
+    },
+    "html": {
+      "enabled": true,
+      "output": "./reports/cucumber-html.html"
+    }
+  }
+}
