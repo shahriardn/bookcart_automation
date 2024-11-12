@@ -13,14 +13,17 @@ Feature: Search for affordable romance books
   @positive @smoke @sanity
   Scenario: User searches for romance books priced under ₹1000, and there are matching books
     Given the system holds the following books in the "Romance" category with the following names and prices
-      | book_name                        | price |
-      | Harry Potter and the Prisoner... | 213   |
-      | The Hookup                       | 434   |
-      | Birthday Girl                    | 441   |
-      | Red Rising                       | 512   |
-      | Before We Were Yours             | 123   |
-      | All the Light We Cannot See      | 542   |
-      | A Court of Mist and Fury         | 645   |
+      | book_name                     | price |
+      | Harry Potter and the Prisoner | 213   |
+      | The Hookup                    | 434   |
+      | Birthday Girl                 | 441   |
+      | Red Rising                    | 512   |
+      | Before We Were Yours          | 123   |
+      | All the Light We Cannot See   | 542   |
+      | A Court of Mist and Fury      | 645   |
+      | Fix Her Up                    | 3333  |
+      | Like a Love Story             | 6666  |
+      | The Beholder                  | 3333  |
     When the user requests to get the list of books with the following filters
       | genre   | price |
       | Romance | 1000  |
@@ -37,10 +40,10 @@ Feature: Search for affordable romance books
 #  @positive
 #  Scenario: User searches for romance books priced under ₹1000, but there are no matching books
 #    Given the system holds the following books in the "Romance" category with the following names and prices
-#      | book_name            | price  |
-#      | Fix Her Up           | 3333   |
-#      | Like a Love Story    | 6666   |
-#      | The Beholder         | 3333   |
+#      | book_name         | price |
+#      | Fix Her Up        | 3333  |
+#      | Like a Love Story | 6666  |
+#      | The Beholder      | 3333  |
 #    When the user requests to get the list of books with the following filters
 #      | filter_type | value   |
 #      | price       | 1000    |
@@ -60,10 +63,10 @@ Feature: Search for affordable romance books
 #  @negative
 #  Scenario: User searches for romance books priced under ₹1000, but the price equals exactly ₹1000 (edge case)
 #    Given the system holds the following books in the "Romance" category with the following names and prices
-#      | book_name          | price |
-#      | Exact Price Book   | 1000  |
-#      | Just Under         | 999   |
-#      | Overpriced Love    | 1001  |
+#      | book_name        | price |
+#      | Exact Price Book | 1000  |
+#      | Just Under       | 999   |
+#      | Overpriced Love  | 1001  |
 #    When the user requests to get the list of books with the following filters
 #      | filter_type | value   |
 #      | price       | 1000    |
@@ -84,8 +87,8 @@ Feature: Search for affordable romance books
 #  @negative
 #  Scenario: User searches for romance books priced under ₹1000, but the price filter is negative (edge case)
 #    When the user requests to get the list of books with the following filters
-#      | filter_type | value |
-#      | price       | -100  |
+#      | filter_type | value   |
+#      | price       | -100    |
 #      | genre       | Romance |
 #    Then the system displays the message "Invalid price filter"
 #
@@ -100,10 +103,10 @@ Feature: Search for affordable romance books
 #  @positive
 #  Scenario: User searches for romance books priced under ₹1000, and books are priced at zero (edge case)
 #    Given the system holds the following books in the "Romance" category with the following names and prices
-#      | book_name          | price |
-#      | Free Romance       | 0     |
-#      | Love for Nothing   | 0     |
-#      | Affordable Hearts  | 500   |
+#      | book_name         | price |
+#      | Free Romance      | 0     |
+#      | Love for Nothing  | 0     |
+#      | Affordable Hearts | 500   |
 #    When the user requests to get the list of books with the following filters
 #      | filter_type | value   |
 #      | price       | 1000    |
@@ -131,9 +134,9 @@ Feature: Search for affordable romance books
 #      | price       | 1000    |
 #      | genre       | Romance |
 #    And the system displays the filtered list of books
-#      | book_name                         | price |
-#      | Before We Were Yours              | 123   |
-#      | Harry Potter and the Prisoner...  | 213   |
+#      | book_name                        | price |
+#      | Before We Were Yours             | 123   |
+#      | Harry Potter and the Prisoner... | 213   |
 #    When the user clears all filters
 #    Then the system updates the list automatically to display all available books
 #
@@ -141,7 +144,7 @@ Feature: Search for affordable romance books
 #  Scenario: User sets a new filter and the system updates the list automatically
 #    Given the user is viewing the list of all available books
 #    When the user sets a new filter with the following criteria
-#      | filter_type | value    |
-#      | price       | 500      |
-#      | genre       | Mystery  |
+#      | filter_type | value   |
+#      | price       | 500     |
+#      | genre       | Mystery |
 #    Then the system updates the list automatically to display books matching the new filters
