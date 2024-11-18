@@ -49,7 +49,7 @@ Feature: Search for affordable romance books
 #      | price       | 1000    |
 #      | genre       | Romance |
 #    Then the system displays the message "There's no available book for the current search filters"
-##
+#
 #  @positive @sanity
 #  Scenario: User searches for romance books priced under ₹1000, and there are more than 10 matching books
 #    Given the system holds more than 10 books in the "Romance" category priced under ₹1000, as listed in "romance_books_under_1000.csv"
@@ -148,3 +148,37 @@ Feature: Search for affordable romance books
 #      | price       | 500     |
 #      | genre       | Mystery |
 #    Then the system updates the list automatically to display books matching the new filters
+#
+#  @negative
+#  Scenario: User searches for romance books with an extremely high price filter (edge case)
+#    When the user requests to get the list of books with the following filters
+#      | filter_type | value   |
+#      | price       | 1000000 |
+#      | genre       | Romance |
+#    Then the system displays the message "There's no available book for the current search filters"
+#
+#  @negative
+#  Scenario: User searches for romance books with conflicting filter values (edge case)
+#    When the user requests to get the list of books with the following filters
+#      | filter_type | value   |
+#      | price       | -100    |
+#      | genre       | Mystery |
+#    Then the system displays the message "Invalid price filter"
+#
+#  @negative
+#  Scenario Outline: User searches for romance books with special characters in book names (edge case)
+#    Given the system holds the following books in the "Romance" category with the following names and prices
+#      | book_name        | price |
+#      | <book_name>      | <price> |
+#    When the user requests to get the list of books with the following filters
+#      | filter_type | value   |
+#      | price       | 1000    |
+#      | genre       | Romance |
+#    Then the system returns the following list if applicable
+#      | book_name        | price |
+#      | <book_name>      | <price> |
+#    Examples:
+#      | book_name           | price |
+#      | Love@FirstSight     | 200   |
+#      | Happily#EverAfter   | 300   |
+#      | Romance&Tragedy     | 400   |
